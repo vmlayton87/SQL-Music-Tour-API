@@ -1,8 +1,9 @@
 // DEPENDENCIES
 const { Sequelize, DataTypes,  Model } = require('sequelize')
-const sequelize = new Sequelize(process.env.PG_URI)
+// before sequelize cli:
+// const sequelize = new Sequelize(process.env.DB_CONNECTION)
 
-// MODEL
+// MODEL: represents a table
 class Band extends Model{}
 
 // ClassName.init({
@@ -11,6 +12,7 @@ class Band extends Model{}
 //     // extra options here 
 // })
 
+// initializes a table and it's columns
 Band.init({
     band_id: { 
         type: DataTypes.INTEGER, 
@@ -34,8 +36,8 @@ Band.init({
         allowNull: false 
     },
 }, {
-    sequelize,
-    modelName: 'Band',
+    sequelize, // connects to the database in Postgres
+    modelName: 'Band', 
     tableName: 'band',
     timestamps: false
 }) 
